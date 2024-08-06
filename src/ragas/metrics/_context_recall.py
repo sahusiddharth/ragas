@@ -101,7 +101,7 @@ CONTEXT_RECALL_RA = Prompt(
             ).dicts(),
         },
     ],
-    input_keys=["question", "context", "answer"],
+    input_keys=["context", "answer"],
     output_key="classification",
     output_type="json",
 )
@@ -146,10 +146,10 @@ class ContextRecall(MetricWithLLM):
             self.reproducibility = 1
 
     def _create_context_recall_prompt(self, row: t.Dict) -> PromptValue:
-        qstn, ctx, gt = row["question"], row["contexts"], row["ground_truth"]
+        ctx, gt = row["contexts"], row["ground_truth"]
         ctx = "\n".join(ctx) if isinstance(ctx, list) else ctx
 
-        return self.context_recall_prompt.format(question=qstn, context=ctx, answer=gt)
+        return self.context_recall_prompt.format(context=ctx, answer=gt)
 
     def _compute_score(self, response: t.Any) -> float:
         response = [1 if item.attributed else 0 for item in response.__root__]
