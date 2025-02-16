@@ -71,6 +71,7 @@ class BaseGraphTransformation(ABC):
 
         return KnowledgeGraph(
             nodes=[node for node in kg.nodes if self.filter_nodes(node)],
+            # there can be relation ships with the nodes that are not present
             relationships=[
                 rel
                 for rel in kg.relationships

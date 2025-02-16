@@ -124,6 +124,7 @@ def generate_personas_from_kg(
 
     top_summaries = []
     for group in groups:
+        # selecting the summary of longest length
         representative_summary = max([summaries[i] for i in group], key=len)
         top_summaries.append(representative_summary)
 

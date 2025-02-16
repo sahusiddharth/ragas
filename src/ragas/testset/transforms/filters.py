@@ -65,6 +65,7 @@ class CustomNodeFilter(LLMBasedNodeFilter):
 
         if node.type.name == "CHUNK":
             parent_nodes = get_parent_nodes(node, kg)
+            # if the level changes this will fail
             if len(parent_nodes) > 0:
                 summary = parent_nodes[0].properties.get("summary", "")
             else:
