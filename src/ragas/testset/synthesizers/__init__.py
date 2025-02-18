@@ -9,6 +9,7 @@ from ragas.testset.synthesizers.multi_hop import (
 from ragas.testset.synthesizers.single_hop.specific import (
     SingleHopSpecificQuerySynthesizer,
 )
+from ragas.testset.synthesizers.scenario_generate import UserScenarioTestsetGenerator
 
 from .base import BaseSynthesizer
 
@@ -38,4 +39,5 @@ def default_query_distribution(
 __all__ = [
     "BaseSynthesizer",
     "default_query_distribution",
+    "UserScenarioTestsetGenerator",
 ]
